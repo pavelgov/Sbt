@@ -5,10 +5,7 @@ import sbt.rnd.javaschool.exceptions.ErrorConnectionException;
 
 import java.util.HashMap;
 
-/**
- * Должен кидать исключения о неполадках сети или
- * о нехватке денег на счету
- */
+
 public class TerminalServer {
     public static HashMap<Integer, Integer> clients = new HashMap<>();
 
@@ -42,7 +39,7 @@ public class TerminalServer {
     public boolean errorConnection() throws ErrorConnectionException  {
         int rand = (int) (Math.random() * 15);
         if (rand < 3) { //цифра регулирует коэффициент частоты ошибок
-            throw new ErrorConnectionException("Ошибка сети. Удаленный сервер не отвечает");
+            throw new ErrorConnectionException();
         }
         else return false;
 

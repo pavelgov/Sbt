@@ -7,4 +7,7 @@ public class ErrorConnectionException extends Exception {
     public ErrorConnectionException(String message) {
         super(message);
     }
+
+    public ErrorConnectionException() {
+    }
 }

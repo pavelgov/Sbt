@@ -26,7 +26,7 @@ public class ATM implements Terminal {
         while (true) {
             try {
 
-                if (checkPin()) {                                  //если ввели верный пин
+                if (checkPin()) {                                 //если ввели верный пин
                     showMenu();                                   //показываем меню
                     String itemMenu = reader.readLine();          //смотрим что выбрал
 
@@ -46,8 +46,10 @@ public class ATM implements Terminal {
                 System.err.println("Неверный пункт меню");
             } catch (NotDivideHundred notDivideHundred) {
                 System.err.println("Сумма должны быть кратной 100");
-            } catch (IOException e) {
+            } catch (NumberFormatException e) {
                 System.err.println("Ошибка ввода");
+            } catch (IOException e) {
+                System.err.println("Ошибка ввода данных");
             }
         }
 
@@ -63,7 +65,7 @@ public class ATM implements Terminal {
         System.out.println("Введите сумму");
         int suma = Integer.parseInt(reader.readLine());  //сумма денег
         divideHundred(suma);
-        if (server.cashFromAccount(id, suma))  //снять деньги ...
+        if (server.cashFromAccount(id, suma))             //снять деньги ...
             System.out.println("Деньги сняты.");
 
     }
@@ -82,12 +84,11 @@ public class ATM implements Terminal {
         else throw new NotDivideHundred();
     }
 
-    public boolean checkPin() throws IOException, AccountIsLockedException {
+    public boolean checkPin() throws IOException, AccountIsLockedException, NumberFormatException {
         if (!isEntered) {
             System.out.println("Введите pin - код");
             pin = Integer.parseInt(reader.readLine());
             id = (pinValidator.checkPin(pin)); //проверяем на сервере
-
 
             if (id == -1) { //введен не верный пин
                 pinCount++;
@@ -106,22 +107,21 @@ public class ATM implements Terminal {
 
     }
 
-    public static void checklock(long currentTime) throws AccountIsLockedException {
+    private void checklock(long currentTime) throws AccountIsLockedException {
 
         if (lastTimeOfLock == 0) {
-            lastTimeOfLock = new Date().getTime();
+            lastTimeOfLock = currentTime;
             throw new AccountIsLockedException(5);
         } else {
-            long result = (new Date().getTime() - lastTimeOfLock) / 1000;
-            if (result < 15) {                                         //если меньше 5 сек
-                lastTimeOfLock = new Date().getTime();
-                throw new AccountIsLockedException(15 - result);
+            long result = (currentTime - lastTimeOfLock) / 1000;
+            if (result < 5) {                                         //если меньше 5 сек
+
+                throw new AccountIsLockedException(5 - result);
             } else {                                                  //если больше 5 сек
                 pinCount = 0;
                 lastTimeOfLock = 0;
             }
         }
-
     }
 
 
