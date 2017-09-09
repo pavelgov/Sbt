@@ -1,0 +1,8 @@
+minus 33 44 
+-11
+plus 3 4 
+7
+delit 15 3 
+5
+umnojit 5 3 
+15
