@@ -58,8 +58,8 @@
       <file leaf-file-name="Decryptor.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sbt/rnd/javaschool/Decryptor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+            <state relative-caret-position="57">
+              <caret line="15" column="40" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -98,9 +98,9 @@
         <option value="$PROJECT_DIR$/src/sbt/rnd/javaschool/Plg.java" />
         <option value="$PROJECT_DIR$/src/sbt/rnd/javaschool/plugins/Plg.java" />
         <option value="$PROJECT_DIR$/src/sbt/rnd/javaschool/EncryptedClassloader.java" />
+        <option value="$PROJECT_DIR$/src/sbt/rnd/javaschool/Decryptor.java" />
         <option value="$PROJECT_DIR$/src/sbt/rnd/javaschool/Main.java" />
         <option value="$PROJECT_DIR$/src/sbt/rnd/javaschool/Plugin.java" />
-        <option value="$PROJECT_DIR$/src/sbt/rnd/javaschool/Decryptor.java" />
       </list>
     </option>
   </component>
@@ -467,7 +467,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="0" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -662,8 +662,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sbt/rnd/javaschool/Decryptor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+        <state relative-caret-position="57">
+          <caret line="15" column="40" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

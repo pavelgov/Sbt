@@ -20,5 +20,14 @@ public class Decryptor {
         }
         Files.write(path, res);
         System.out.println("Файл зашифрован");
+
+    }
+
+    private byte[] decrypt(byte[] content, byte[] key) {
+
+        byte[] res = new byte[content.length];
+
+
+        return res;
     }
 }
