@@ -4,7 +4,10 @@ import java.io.*;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by User on 20.09.2017.
@@ -14,10 +17,22 @@ public class CachedProxy {
 
 
     private String getStrFromArgs(Method method, Object[] mArgs) {
+        MyAnnotation annotation = method.getAnnotation(MyAnnotation.class);
+        List<Object> identityArgList = Arrays.asList(annotation.identityBy());
+        List<Object> presentArgList = new ArrayList();
+
+        if (identityArgList.isEmpty()) presentArgList = Arrays.asList(mArgs);//если нет аргументов в аннотации
+        else {
+            for (Object o : mArgs) {                        //перебираем аргументы массива
+                if (identityArgList.contains(o.getClass())) //если совпадают с арг. из аннотации то
+                    presentArgList.add(o);                  //они должны участвовать в расчетах, доб.в финальный лист
+            }
+        }
+
         StringBuilder args = new StringBuilder();
 
-        for (int i = 0; i < mArgs.length; i++) {    //преобразуем массив аргументов в одну строку
-            args.append(mArgs[i] + " ");
+        for (int i = 0; i < presentArgList.size(); i++) {    //преобразуем массив аргументов в одну строку
+            args.append(presentArgList.get(i) + " ");
         }
         return method.getName() + " " + args.toString(); //все аргументы и метод одной строкой
     }
@@ -61,7 +76,7 @@ public class CachedProxy {
         } catch (IOException e) {
             return null;
         } catch (ClassNotFoundException e) {
-           return null;
+            return null;
         }
         String input = getStrFromArgs(method, mArgs);
         return map.get(input);
