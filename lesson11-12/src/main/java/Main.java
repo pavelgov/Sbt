@@ -3,7 +3,7 @@
  */
 public class Main {
     public static void main(String[] args) {
-        ThreadPool pool = new ScalableThreadPool(2,3);
+        ThreadPool pool = new ScalableThreadPool(2, 3);
         //   ThreadPool pool = new FixedThreadPool(4);
 
         pool.execute(() -> {
