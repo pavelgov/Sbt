@@ -39,15 +39,19 @@ public class Tractor {
     public void turnClockwise() {
         if (orientation == Orientation.NORTH) {
             orientation = Orientation.EAST;
-        } else
+            return;
+        }
         if (orientation == Orientation.EAST) {
             orientation = Orientation.SOUTH;
-        } else
+            return;
+        }
         if (orientation == Orientation.SOUTH) {
             orientation = Orientation.WEST;
-        } else
+            return;
+        }
         if (orientation == Orientation.WEST) {
             orientation = Orientation.NORTH;
+            return;
         }
     }
 
